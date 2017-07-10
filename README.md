@@ -2,6 +2,20 @@
 
 Snakemake-based CNV calling pipeline using MrCaNaVar and mrsFAST
 
+## Installation
+
+Get the code.
+
+```bash
+git clone https://github.com/huddlej/snake-cnv.git
+```
+
+Build the dependencies.
+
+```bash
+make
+```
+
 ## Running on a SLURM cluster
 
 ```bash
