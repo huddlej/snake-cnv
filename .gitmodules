@@ -1,0 +1,12 @@
+[submodule "dist/vcflib"]
+	path = dist/vcflib
+	url = https://github.com/vcflib/vcflib.git
+[submodule "dist/mrsfast"]
+	path = dist/mrsfast
+	url = https://github.com/sfu-compbio/mrsfast.git
+[submodule "dist/mrssnake"]
+	path = dist/mrssnake
+	url = https://github.com/bnelsj/mrssnake.git
+[submodule "dist/mrcanavar"]
+	path = dist/mrcanavar
+	url = https://github.com/BilkentCompGen/mrcanavar.git
