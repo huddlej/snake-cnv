@@ -1,0 +1,31 @@
+{
+    "__default__":
+    {
+        "time" : "30",
+        "cores" : 1,
+        "memory": "512",
+        "disk": "6000",
+        "name": "{rule}.{wildcards}",
+        "stdout": "log/{rule}.{wildcards}.%j.out",
+        "stderr": "log/{rule}.{wildcards}.%j.err"
+    },
+    "map_reads": {
+        "time": "180",
+        "cores": 2,
+        "memory": "25600"
+    },
+    "map_chunked_reads_with_mrsfast": {
+        "time": "180",
+        "cores": 1,
+        "memory": "8192"
+    },
+	"convert_mapped_chunked_reads_from_sam_to_bam": {
+		"memory": "4096"
+    },
+    "merge_alignments_by_sample": {
+        "time": "120"
+    },
+    "index_reference_for_bwa": {
+        "memory": "8000"
+    }
+}
