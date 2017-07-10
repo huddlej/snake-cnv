@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 import tempfile
 
+# Set snakemake directory
+SNAKEMAKE_DIR = os.path.dirname(workflow.snakefile)
+
 configfile: "config.json"
-shell.prefix("source config.sh; ")
+shell.prefix("source config.sh; export PATH=$PATH:{SNAKEMAKE_DIR}/bin; ")
 
 TMPDIR = tempfile.gettempdir()
 THREADS = str(config.get("threads", 1))
