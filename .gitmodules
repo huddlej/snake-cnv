@@ -1,6 +1,3 @@
-[submodule "dist/vcflib"]
-	path = dist/vcflib
-	url = https://github.com/vcflib/vcflib.git
 [submodule "dist/mrsfast"]
 	path = dist/mrsfast
 	url = https://github.com/sfu-compbio/mrsfast.git
