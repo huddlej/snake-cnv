@@ -1,0 +1,7 @@
+*.out
+*.vcf
+*.gz
+*.bed
+*.index
+*.sizes
+.snakemake
