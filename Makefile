@@ -2,6 +2,7 @@ all: $(addprefix bin/,bam_chunker_cascade mrsfast mrcanavar)
 
 bin/bam_chunker_cascade:
 	git submodule update --init --recursive dist/mrssnake
+	-cd dist/mrssnake && $(MAKE)
 	-@ln -s ../dist/mrssnake/bin/bam_chunker_cascade bin/bam_chunker_cascade
 
 bin/mrsfast:
