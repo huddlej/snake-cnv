@@ -8,10 +8,9 @@ dependencies:
   - bwa=0.7.15
   - pandas
   - r-base=3.3.2
-  - samblaster=0.1.22
   - samtools=1.3.1
   - tabix=0.2.5
   - ucsc-bedgraphtobigwig=366
   - ucsc-bedtobigbed=366
   - ucsc-liftover=366
-  - vcflib=1.0.0_rc1
+  - vcflib=1.0.0_rc0

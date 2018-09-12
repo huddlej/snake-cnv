@@ -1,8 +1,16 @@
-all: $(addprefix bin/,bam_chunker_cascade mrsfast mrcanavar)
+$(shell mkdir -p bin)
+OPENMP_CXX=g++ -lstdc++ -fopenmp -lz -lm
+
+all: $(addprefix bin/,bam_chunker_cascade mrsfast mrcanavar samblaster)
+
+bin/samblaster :
+	git submodule update --init --recursive dist/samblaster
+	-cd dist/samblaster && $(MAKE)
+	-ln -s ../dist/samblaster/bin/samblaster bin/samblaster
 
 bin/bam_chunker_cascade:
 	git submodule update --init --recursive dist/mrssnake
-	-cd dist/mrssnake && $(MAKE)
+	-cd dist/mrssnake && $(MAKE) CXX="$(OPENMP_CXX)"
 	-@ln -s ../dist/mrssnake/bin/bam_chunker_cascade bin/bam_chunker_cascade
 
 bin/mrsfast:

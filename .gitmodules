@@ -7,3 +7,6 @@
 [submodule "dist/mrcanavar"]
 	path = dist/mrcanavar
 	url = https://github.com/BilkentCompGen/mrcanavar.git
+[submodule "dist/samblaster"]
+	path = dist/samblaster
+	url = https://github.com/GregoryFaust/samblaster.git

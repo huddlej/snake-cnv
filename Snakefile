@@ -232,7 +232,7 @@ rule convert_mapped_chunked_reads_from_sam_to_bam:
     input: "chunked_mrsfast_alignments/{sample}/{part}.sam.gz"
     output: temp("sorted_chunked_mrsfast_alignments/{sample}/{part}.bam")
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | samtools sort > {output}"
+    shell: "gzip -c -d {input} | samtools sort > {output}"
 
 #
 # Align reads with mrsFAST-ULTRA
@@ -254,7 +254,7 @@ rule uncompress_dgrp_variants:
     input: "dgrp2_dm6_dbSNP.vcf.gz"
     output: "dgrp2_dm6_dbSNP.vcf"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} > {output}"
+    shell: "gzip -c -d {input} > {output}"
 
 rule download_dgrp_variants:
     output: "dgrp2_dm6_dbSNP.vcf.gz"
@@ -466,7 +466,7 @@ rule uncompress_liftover_for_dm3_to_dm6:
     input: "dm3ToDm6.over.chain.gz"
     output: "dm3ToDm6.over.chain"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} > {output}"
+    shell: "gzip -c -d {input} > {output}"
 
 rule download_liftover_for_dm3_to_dm6:
     output: "dm3ToDm6.over.chain.gz"
@@ -503,37 +503,37 @@ rule merge_repeatmasker_without_RNA_and_trf_outputs:
     input: "dm6.trf.bed.gz", "simpleRepeat.bed.gz", "windowmaskerSdust.bed.gz", "dm6.repeatmasker_without_RNA.bed.gz"
     output: "dm6.repeats_without_RNA.bed"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | cut -f 1-3 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 > {output}"
+    shell: "gzip -c -d {input} | cut -f 1-3 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 > {output}"
 
 rule merge_repeatmasker_and_trf_outputs:
     input: "dm6.trf.bed.gz", "dm6.repeatmasker.bed.gz"
     output: "dm6.repeats.bed"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | cut -f 1-3 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 > {output}"
+    shell: "gzip -c -d {input} | cut -f 1-3 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 > {output}"
 
 rule get_repeatmasker_output_without_RNA:
     input: "dm6.repeatmasker.bed.gz"
     output: "dm6.repeatmasker_without_RNA.bed.gz"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | grep -iv RNA | bgzip -c > {output}"
+    shell: "gzip -c -d {input} | grep -iv RNA | bgzip -c > {output}"
 
 rule convert_repeatmasker_out_to_bed:
     input: "dm6.fa.out.gz"
     output: "dm6.repeatmasker.bed.gz"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | $HOME/src/fasta_tools/out_to_bed.sh /dev/stdin | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 -c 4 -o distinct | bgzip -c > {output}"
+    shell: "gzip -c -d {input} | ./scripts/out_to_bed.sh /dev/stdin | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 -c 4 -o distinct | bgzip -c > {output}"
 
 rule convert_windowmasker_to_bed:
     input: "windowmaskerSdust.txt.gz"
     output: "windowmaskerSdust.bed.gz"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | cut -f 2-4 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 | bgzip -c > {output}"
+    shell: "gzip -c -d {input} | cut -f 2-4 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 | bgzip -c > {output}"
 
 rule convert_simpleRepeat_to_bed:
     input: "simpleRepeat.txt.gz"
     output: "simpleRepeat.bed.gz"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} | cut -f 2-4 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 | bgzip -c > {output}"
+    shell: "gzip -c -d {input} | cut -f 2-4 | sort -k 1,1 -k 2,2n | bedtools merge -i stdin -d 0 | bgzip -c > {output}"
 
 rule download_windowmasker_output:
     output: "windowmaskerSdust.txt.gz"
@@ -581,7 +581,7 @@ rule uncompress_reference:
     input: "reference/dm6.fasta.gz"
     output: "reference/dm6.fasta"
     conda: "envs/snake-cnv.yaml"
-    shell: "zcat {input} > {output}"
+    shell: "gzip -c -d {input} > {output}"
 
 rule download_reference:
     output: "reference/dm6.fasta.gz"
