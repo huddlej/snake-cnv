@@ -6,7 +6,7 @@ all: $(addprefix bin/,bam_chunker_cascade mrsfast mrcanavar samblaster)
 bin/samblaster :
 	git submodule update --init --recursive dist/samblaster
 	-cd dist/samblaster && $(MAKE)
-	-ln -s ../dist/samblaster/bin/samblaster bin/samblaster
+	-ln -s ../dist/samblaster/samblaster bin/samblaster
 
 bin/bam_chunker_cascade:
 	git submodule update --init --recursive dist/mrssnake
