@@ -1,4 +1,5 @@
 {
+    "aspera_key_path": "/app/aspera-connect/3.5.1/etc/asperaweb_id_dsa.openssh",
     "manifest": "PRJNA36679.tab",
     "samples": [
         "SAMN00013467"
