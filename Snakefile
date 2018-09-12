@@ -4,6 +4,7 @@ import tempfile
 
 # Set snakemake directory
 SNAKEMAKE_DIR = os.path.dirname(workflow.snakefile)
+shell.prefix("export PATH=$PATH:{SNAKEMAKE_DIR}/bin; ")
 
 configfile: "config.json"
 
