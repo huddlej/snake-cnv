@@ -1,7 +1,7 @@
 {
     "__default__":
     {
-        "time" : "30",
+        "time" : "00:30:00",
         "cores" : 1,
         "memory": "512",
         "disk": "6000",
@@ -10,12 +10,12 @@
         "stderr": "log/{rule}.{wildcards}.%j.err"
     },
     "map_reads": {
-        "time": "180",
+        "time": "03:00:00",
         "cores": 2,
         "memory": "25600"
     },
     "map_chunked_reads_with_mrsfast": {
-        "time": "180",
+        "time": "03:00:00",
         "cores": 1,
         "memory": "8192"
     },
@@ -23,7 +23,7 @@
 		"memory": "4096"
     },
     "merge_alignments_by_sample": {
-        "time": "120"
+        "time": "02:00:00"
     },
     "index_reference_for_bwa": {
         "memory": "8000"
