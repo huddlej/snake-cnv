@@ -13,4 +13,4 @@ dependencies:
   - ucsc-bedgraphtobigwig=366
   - ucsc-bedtobigbed=366
   - ucsc-liftover=366
-  - vcflib=1.0.0_rc0
+  - vcflib=1.0.0_rc1
